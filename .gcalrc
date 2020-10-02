@@ -1,0 +1,8 @@
+;my latitude   59.977388
+;my longitude -10.650498E
+;my height above sea level 440m (guesstimate)
+GMT+1
+$c=+59.98-010.65
+0 Sunrise: %o$c
+0 Sunset: %s$c
+0 Moon phase: %O
