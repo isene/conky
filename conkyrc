@@ -47,8 +47,8 @@ TEXT
 { "full_text" : " IP: ${if_up wlp2s0}${addr wlp2s0} ${texeci 3 /home/geir/bin/essid.sh}${if_match ${wireless_link_qual_perc wlp2s0}<100} ${endif}${wireless_link_qual_perc wlp2s0}% <${execi 3 if ping -c 1 -W 1 www.vg.no >/dev/null; then echo "O"; else echo "X"; fi;}> [${texeci 10 /home/geir/bin/pingavg.rb}] " , "color" : "\#aaaaaa" },
 { "full_text" : "${if_existing .mail.lock}.${else} ${endif}${exec echo `cat /home/geir/.mail2 | grep G`}  ${exec echo `cat /home/geir/.mail2 | grep A`}${if_existing .nomail} [-]${endif}${if_existing .nonet} [NN]${endif}${if_existing .mail.fail} [NL]${endif} " , "color" : "\#dddddd" },
 { "full_text" : " io: ${texeci 10 sqlite3 -csv ~/.newsbeuter/cache.db "SELECT url FROM rss_item WHERE unread = 1;" | grep isene.org | grep comment | wc -l}  im: ${texeci 10 sqlite3 -csv ~/.newsbeuter/cache.db "SELECT url FROM rss_item WHERE unread = 1;" | grep isene.me | grep comment | wc -l} " , "color" : "\#dddddd" },
-{ "full_text" : " V: ${texeci 3 /home/geir/bin/conky_vol.sh}${texeci 3 /home/geir/bin/conky_volM.sh} " , "color" : "\#dddddd" },
-{ "full_text" : " L: ${texeci 3 light -G | awk '{print int($1+0.5)}'} " , "color" : "\#dddddd" },
+{ "full_text" : " V ${texeci 3 /home/geir/bin/conky_vol.sh}${texeci 3 /home/geir/bin/conky_volM.sh} " , "color" : "\#dddddd" },
+{ "full_text" : " L ${texeci 3 light -G | awk '{print int($1+0.5)}'} " , "color" : "\#dddddd" },
 { "full_text" : " ${battery_short BAT0} ${execi 5 /home/geir/bin/battery_left.sh} ${execi 5 /home/geir/bin/battery_discharge.sh}W ${if_match ${battery_percent BAT0}<6} ${blink XXXXX} ${endif}" , "color" : ${if_match ${battery_percent BAT0}<5}"\#ff0000"${else}"\#dddddd"${endif} }
 ],
 
@@ -76,11 +76,11 @@ TEXT
 # `-> Show " [NN] " if mail_fetch cannot get Net access
 # `-> Show " [NL] " if mail_fetch fails to login to local or remote server
 #
-# V: ${texeci 3 /home/geir/bin/conky_vol.sh}${texeci 3 /home/geir/bin/conky_volM.sh} " , "color" : "\#dddddd" },
+# V ${texeci 3 /home/geir/bin/conky_vol.sh}${texeci 3 /home/geir/bin/conky_volM.sh} " , "color" : "\#dddddd" },
 # `-> Show volume level
 # `-> Show "[Off] (from aumixer) if volume is off
 #
-# L: ${texeci 10 xbacklight -get | awk '{print int($1)}'} " , "color" : "\#dddddd" },
+# L ${texeci 10 xbacklight -get | awk '{print int($1)}'} " , "color" : "\#dddddd" },
 # `-> Show LCD brightness level
 #
 # ${battery_short BAT0} ${execi 5 /home/geir/bin/battery_left.sh} ${execi 5 /home/geir/bin/battery_discharge.sh}W ${if_match ${battery_percent BAT0}<6} ${blink XXXXX} ${endif}" , "color" : ${if_match ${battery_percent BAT0}<5}"\#ff0000"${else}"\#dddddd"${endif}
