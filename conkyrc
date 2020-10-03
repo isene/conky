@@ -92,3 +92,4 @@ TEXT
 #  `-> Battery percentage, time left and current drain in watts and three spaces to pad the output from the right edge
 #  `-> Write out "XXXXX" if battery is below 6%
 #  `-> Suspend if battery is below 5%
+
