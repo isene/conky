@@ -17,3 +17,4 @@ The conky bar with each element annotated:
 The conky configuration (conkyrc) is the main file and includes extensive info
 on all the parts at the bottom of that file. All underlying scripts are in the
 scripts directory.
+
