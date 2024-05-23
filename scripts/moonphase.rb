@@ -21,12 +21,13 @@ jd     = DateTime.new(y, m, d, h, 0, 0, @tz).ajd.to_f
 ph_a   = ((jd - fm) % mp) / mp * 360
 mp_ip  = ((1 + Math.cos(ph_a.deg))*50).to_i
 ph_a   > 180 ? gs = "+" : gs = "-"
-if mp_ip < 25
-  sym = "○"
-elsif mp_ip < 75
-  gs == "+" ? sym = "◐" : sym = "◑"
-else
-  sym = "●"
-end
+#if mp_ip < 25
+#  sym = "○"
+#elsif mp_ip < 75
+#  gs == "+" ? sym = "◐" : sym = "◑"
+#else
+#  sym = "●"
+#end
 
-puts "#{sym} #{mp_ip}%#{gs}"
+#puts "#{sym} #{mp_ip}%#{gs}"
+puts "#{mp_ip}%#{gs}"
