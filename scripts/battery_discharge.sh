@@ -2,9 +2,9 @@
 
 # Echos battery discharge rate
 
-bat_discharge=$(cat /sys/class/power_supply/BAT0/current_now)
-bat_watts=$(echo "scale=1;$bat_discharge/100000" | bc)
-bat_10_lim=$(echo "$bat_discharge/100000" | bc)
+bat_discharge=$(cat /sys/class/power_supply/BAT0/power_now)
+bat_watts=$(echo "scale=1;$bat_discharge/1000000" | bc)
+bat_10_lim=$(echo "$bat_discharge/1000000" | bc)
 if [ "$bat_10_lim" -lt 10 ]
 	then
 		echo "" $bat_watts
