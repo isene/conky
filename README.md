@@ -1,5 +1,5 @@
 # conky information bar
-
+ 
 This is my main info bar. I run the i3 Window Manager, but this conky bar
 would be usable with any setup or WM that can host conky in a bar. I have in
 the top of my screen as you can see in this screenshot:
