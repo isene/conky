@@ -1,3 +1,3 @@
 #!/bin/bash
 
-amixer get Master | awk -F'[]%[]' '/%/ { print $2"%" }'
+amixer get Master | awk -F'[]%[]' '/%/ { print $2"%" }' | head -n 1
