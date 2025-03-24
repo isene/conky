@@ -1,6 +1,6 @@
 #!/bin/bash
 
-essid=$(iwgetid -r)
+essid=$(iw dev | grep ssid | sed "s/^.*ssid //")
 essidlength=${#essid}
 
 if [ $essidlength -lt 13 ]
