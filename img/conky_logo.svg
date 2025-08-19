@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="200" height="200" fill="#0d1117"/>
+  
+  <!-- System monitor frame -->
+  <rect x="20" y="40" width="160" height="120" rx="8" fill="#1c1c1c" stroke="#444" stroke-width="2"/>
+  
+  <!-- Title bar -->
+  <rect x="20" y="40" width="160" height="25" rx="8 8 0 0" fill="#333"/>
+  <circle cx="35" cy="52.5" r="4" fill="#ff5f57"/>
+  <circle cx="50" cy="52.5" r="4" fill="#febc2e"/>
+  <circle cx="65" cy="52.5" r="4" fill="#28ca42"/>
+  <text x="100" y="58" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">conky</text>
+  
+  <!-- System stats with animations -->
+  <g font-family="monospace" font-size="9" fill="#00ff00">
+    <!-- CPU -->
+    <text x="30" y="80">CPU:</text>
+    <rect x="60" y="72" width="100" height="8" fill="none" stroke="#333" stroke-width="1"/>
+    <rect x="60" y="72" width="65" height="8" fill="#00ff00" opacity="0.7">
+      <animate attributeName="width" values="65;80;70;65" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="170" y="80">65%</text>
+    
+    <!-- Memory -->
+    <text x="30" y="95">RAM:</text>
+    <rect x="60" y="87" width="100" height="8" fill="none" stroke="#333" stroke-width="1"/>
+    <rect x="60" y="87" width="45" height="8" fill="#ffff00" opacity="0.7">
+      <animate attributeName="width" values="45;50;48;45" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="170" y="95">45%</text>
+    
+    <!-- Disk -->
+    <text x="30" y="110">HDD:</text>
+    <rect x="60" y="102" width="100" height="8" fill="none" stroke="#333" stroke-width="1"/>
+    <rect x="60" y="102" width="30" height="8" fill="#0088ff" opacity="0.7"/>
+    <text x="170" y="110">30%</text>
+    
+    <!-- Network -->
+    <text x="30" y="125">NET:</text>
+    <text x="60" y="125">↑ 1.2MB/s ↓ 5.7MB/s</text>
+    
+    <!-- Temperature -->
+    <text x="30" y="140">TEMP:</text>
+    <text x="60" y="140" fill="#ff6600">CPU 58°C GPU 45°C</text>
+  </g>
+  
+  <!-- Floating system widgets -->
+  <g opacity="0.6">
+    <!-- CPU usage circle -->
+    <circle cx="40" cy="180" r="15" fill="none" stroke="#333" stroke-width="2"/>
+    <circle cx="40" cy="180" r="15" fill="none" stroke="#00ff00" stroke-width="2" 
+            stroke-dasharray="60" stroke-dashoffset="25">
+      <animateTransform attributeName="transform" type="rotate" 
+                       values="0 40 180;360 40 180" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <text x="40" y="185" font-family="monospace" font-size="8" fill="#fff" text-anchor="middle">CPU</text>
+    
+    <!-- Memory usage circle -->
+    <circle cx="80" cy="180" r="15" fill="none" stroke="#333" stroke-width="2"/>
+    <circle cx="80" cy="180" r="15" fill="none" stroke="#ffff00" stroke-width="2" 
+            stroke-dasharray="45" stroke-dashoffset="50">
+      <animate attributeName="stroke-dashoffset" values="50;45;50" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="80" y="185" font-family="monospace" font-size="8" fill="#fff" text-anchor="middle">RAM</text>
+  </g>
+  
+  <!-- Glowing effect -->
+  <rect x="20" y="40" width="160" height="120" rx="8" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Text -->
+  <text x="100" y="185" font-family="monospace" font-size="18" fill="#fff" text-anchor="middle" font-weight="bold">conky</text>
+  <text x="100" y="197" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">System Information Bar</text>
+</svg>
