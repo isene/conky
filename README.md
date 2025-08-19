@@ -7,6 +7,7 @@
 [![Stay Amazing](https://img.shields.io/badge/Stay-Amazing-blue.svg)](https://isene.org)
 
 <img src="img/conky_logo.svg" align="left" width="150" height="150">
+<br clear="left"/>
 
 This is my main info bar. I run the i3 Window Manager, but this conky bar
 would be usable with any setup or WM that can host conky in a bar. I have in
