@@ -1,3 +1,9 @@
 #!/usr/bin/env ruby
 
-puts `ping -c5 -W1 8.8.8.8`.gsub(/\n/, '').sub(/.*\d\d\d\/(.+)\.\d+\/\d.*/, '\1').rjust(4).slice(0,4)
+output = `ping -c5 -W1 8.8.8.8 2>&1`
+if output =~ /min\/avg\/max\/mdev = [\d.]+\/([\d.]+)\//
+  avg = $1.to_f.round.to_s
+  puts avg.rjust(4).slice(0,4)
+else
+  puts "   -"
+end

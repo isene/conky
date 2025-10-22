@@ -41,41 +41,41 @@ TEXT
 
 # JSON for i3bar
 [
-{"full_text":"${time %H:%M  %Y-%m-%d %V.%u}","color":"\#ffffff"},
-{"full_text":"${execi 1900 ~/bin/weather.sh oslo | cut -c1-15} ${execi 3700 ~/bin/moonphase.rb}","color":"\#dddddd"},
-{"full_text":"C:${if_match ${cpu cpu0}<10} ${endif}${cpu cpu0}% ${loadavg 1} ${texeci 4 ~/bin/cputemp.sh}","color":${if_match ${acpitemp}>80}"\#ff0000"${else}"\#aaaaaa"${endif}},
-{"full_text":"M:${if_match ${memperc}<10} ${endif}${memperc}% ${swapperc}% D:${fs_free_perc /home/}% ${fs_free /home/}","color":"\#aaaaaa"},
-{"full_text":"I:${texeci 3 ~/bin/essid.sh} ${if_match ${wireless_link_qual_perc wlp0s20f3}<100}${endif}${wireless_link_qual_perc wlp0s20f3}% ${execi 3 if ping -c 1 -W 1 8.8.8.8 >/dev/null; then echo "✓"; else echo "✗"; fi;} ${texeci 10 ~/bin/pingavg.rb}","color":"\#aaaaaa"},
-{"full_text":"${if_existing .mail.lock}.${else} ${endif}${exec echo `cat ~/.mail2|grep G`}","color":${if_match ${exec echo `cat ~/.mail2|grep G|tr -d -c 0-9`}>0}"\#fbbd8f"${else}"\#dddddd"${endif}},
-{"full_text":"${exec echo `cat ~/.mail2|grep A`}","color":${if_match ${exec echo `cat ~/.mail2|grep A|tr -d -c 0-9`}>0}"\#8fa7fb"${else}"\#dddddd"${endif}},
-{"full_text":"${exec echo `cat ~/.mail2|grep P`}","color":${if_match ${exec echo `cat ~/.mail2|grep P|tr -d -c 0-9`}>0}"\#ce8ffb"${else}"\#dddddd"${endif}},
-{"full_text":"${exec echo `cat ~/.mail2|grep D`}","color":${if_match ${exec echo `cat ~/.mail2|grep D|tr -d -c 0-9`}>0}"\#51c1b7"${else}"\#dddddd"${endif}},
-{"full_text":"${if_existing .mail_no}[-]${endif}${if_existing .nonet}[NN]${endif}${if_existing .mail.fail}[NL]${endif}","color":"\#ffffff"},
-{"full_text":"io:${texeci 10 sqlite3 -csv ~/.newsbeuter/cache.db "SELECT url FROM rss_item WHERE unread = 1;" | grep isene.org | grep comment | wc -l} im:${texeci 300 sqlite3 -csv ~/.newsbeuter/cache.db "SELECT url FROM rss_item WHERE unread = 1;"|grep isene.me|grep comment|wc -l}","color":"\#aaaaaa"},
-{"full_text":"♪${texeci 1 ~/bin/conky_vol.sh}${texeci 1 ~/bin/conky_volM.sh}","color":"\#dddddd"},
-{"full_text":"☼${texeci 3 light -G | awk '{print int($1+0.5)}'}","color":"\#dddddd"},
-{"full_text":"${battery_short BAT0} ${execi 5 ~/bin/battery_left.sh} ${execi 5 ~/bin/battery_discharge.sh}W${if_match ${battery_percent BAT0}<6} XXXXX${endif}","color":${if_match ${battery_percent BAT0}<5}"\#ff0000"${else}"\#dddddd"${endif}}
+{"full_text":"${time %H:%M  %Y-%m-%d  %V.%u}" , "color" : "\#ffffff"},
+{"full_text":"${execi 1900 ~/bin/weather.sh oslo | cut -c1-20} ${execi 3700 ~/bin/moonphase.rb}", "color":"\#dddddd"},
+{"full_text":"C:${if_match ${cpu cpu0}<10} ${endif}${cpu cpu0}% ${loadavg 1} ${texeci 4 ~/bin/cputemp.sh}", "color":${if_match ${acpitemp}>80}"\#ff0000"${else}"\#aaaaaa"${endif}},
+{"full_text":"M:${if_match ${memperc}<10} ${endif}${memperc}% ${swapperc}%  D:${fs_free_perc /home/}% ${fs_free /home/}", "color":"\#aaaaaa"},
+{"full_text":"I: ${texeci 3 ~/bin/conky_network_safe.sh}", "color":"\#aaaaaa"},
+{"full_text":"${if_existing .mail.lock}.${else} ${endif}${exec echo `cat ~/.mail2|grep G`}", "color":${if_match ${exec echo `cat ~/.mail2|grep G|tr -d -c 0-9`}>0}"\#fbbd8f"${else}"\#dddddd"${endif}},
+{"full_text":"${exec echo `cat ~/.mail2|grep A`}", "color":${if_match ${exec echo `cat ~/.mail2|grep A|tr -d -c 0-9`}>0}"\#8fa7fb"${else}"\#dddddd"${endif}},
+{"full_text":"${exec echo `cat ~/.mail2|grep P`}", "color":${if_match ${exec echo `cat ~/.mail2|grep P|tr -d -c 0-9`}>0}"\#ce8ffb"${else}"\#dddddd"${endif}},
+{"full_text":"${exec echo `cat ~/.mail2|grep D`}", "color":${if_match ${exec echo `cat ~/.mail2|grep D|tr -d -c 0-9`}>0}"\#51c1b7"${else}"\#dddddd"${endif}},
+{"full_text":"${if_existing .mail_no}-${endif}${if_existing .nonet}✗${endif}${if_existing .mail.fail}✗${endif}", "color":"\#ffffff"},
+{"full_text":"i:${texeci 10 sqlite3 -csv ~/.newsbeuter/cache.db "SELECT url FROM rss_item WHERE unread = 1;" | grep isene.org | grep comment | wc -l} m:${texeci 300 sqlite3 -csv ~/.newsbeuter/cache.db "SELECT url FROM rss_item WHERE unread = 1;"|grep isene.me|grep comment|wc -l} ", "color":"\#aaaaaa"},
+{"full_text":"♪${texeci 1 ~/bin/conky_vol.sh}${texeci 1 ~/bin/conky_volM.sh}", "color":"\#dddddd"},
+{"full_text":"☼${texeci 3 light -G | awk '{print int($1+0.5)}'}", "color":"\#dddddd"},
+{"full_text":"${battery_short BAT0} ${execi 5 ~/bin/battery_left.sh} ${execi 5 ~/bin/battery_discharge.sh}W ${if_match ${battery_percent BAT0}<6} {XXXXX} ${endif}", "color":${if_match ${battery_percent BAT0}<5}"\#ff0000"${else}"\#dddddd"${endif}}
 ],
 
-# Updated Documentation:
+# Explanation:
 #
-# ${time %H:%M  %Y-%m-%d %V.%u}
+# ${time %H:%M  %Y-%m-%d  (%V.%u)} " , "color" : "\#ffffff"
 # `-> Show time and date, week number and day number in the week
 #
-# ${execi 1900 ~/bin/weather.sh oslo | cut -c1-15} ${execi 3700 ~/bin/moonphase.rb}
-# `-> Show local weather (limited to 15 chars) and moon phase
+# ${execi 1900 /home/geir/bin/weather.sh oslo | cut -c1-20}  ≌ ${execi 1800 /home/geir/bin/air-smestad.rb}  ● ${execi 18000 gcal -c | awk '/Moon/, /$/' | sed -e 's/^.*: //'} " , "color" : "\#dddddd"
+# `-> Show my local weather, air quality and the Moon phase (config in .gcalrc), "-" indicates a waning moon while "+" indicates a vexing moon.
 #
-# C:${if_match ${cpu cpu0}<10} ${endif}${cpu cpu0}% ${loadavg 1} ${texeci 4 ~/bin/cputemp.sh}
-# `-> Show CPU load (padded to two digits), system load and CPU temperature via script (color red if above 80°C)
+# C: ${if_match ${cpu cpu0}<10} ${endif}${cpu cpu0}% ${loadavg 1} ${acpitemp}° " , "color" : ${if_match ${acpitemp}>80}"\#ff0000"${else}"\#aaaaaa"${endif}
+# `-> Show CPU load (pad to two digits), system load and CPU temperature (color red if above 80 deg celsius)
 # 
-# M:${if_match ${memperc}<10} ${endif}${memperc}% ${swapperc}% D:${fs_free_perc /home/}% ${fs_free /home/}
-# `-> Memory usage (padded to two digits), Swap usage, /home partition free percentage and free space
+# M: ${if_match ${memperc}<10} ${endif}${memperc}% ${swapperc}%  D: ${fs_free_perc /}% " , "color" : "\#aaaaaa"
+# `-> Memory usage (padded to two digits), Swap usage, Disk usage
 #
-# I:${texeci 3 ~/bin/essid.sh} ${wireless_link_qual_perc wlp0s20f3}% ✓/✗ ${texeci 10 ~/bin/pingavg.rb}
-# `-> Show wifi essid, signal strength (wlp0s20f3), online status (✓ if can reach 8.8.8.8, ✗ if not), and ping average
+# IP: ${if_up wlp2s0}${addr wlp2s0}  ${texeci 3 /home/geir/bin/essid.sh}${if_match ${wireless_link_qual_perc wlp2s0}<100} ${endif}${wireless_link_qual_perc wlo1}% <${execi 3 if ping -c 1 -W 1 www.vg.no >/dev/null; then echo "O"; else echo "X"; fi;}> [${texeci 10 /home/geir/bin/pingavg.rb}] " , "color" : "\#aaaaaa"
+# `-> Show IP address, wifi essid and strength (if wifi). Print "<O>" if the address can be reached (www.vg.no), and "<X>" if not
 #
-# Mail indicators (split across multiple JSON objects with conditional coloring):
-# `-> ${if_existing .mail.lock}.${else} ${endif}${exec echo `cat ~/.mail2|grep G`} - Dot/space merged with G counter (orange if >0)
+# ${if_existing .mail.lock}.${else} ${endif}${exec echo `cat /home/geir/.mail2 | grep G`}  ${exec echo `cat /home/geir/.mail2 | grep A`}${if_existing .nomail} [NoMail]${endif}${if_existing .nonet} [NN]${endif}${if_existing .mail.fail} [NL]${endif} " , "color" : "\#dddddd"
+# `-> Show a dot if the script mail_fetch.rb is running, a space if not (see # https://github.com/isene/mailfetch)
 # `-> Content of local imap Maildir boxes that are watched by mail_fetch
 # `-> Show " [NoMail] " if the NoMail directive is set via mail_fetch
 # `-> Show " [NN] " if mail_fetch cannot get Net access
