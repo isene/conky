@@ -1,9 +1,9 @@
 #!/bin/sh
-#AccuWeather (r) RSS weather tool for conky
+#wttr.in weather tool for conky
 #
 #USAGE: weather.sh <locationcode>
 #
-#(c) Michael Seiler 2007
+#Modified to use wttr.in (2025)
 
 METRIC=1 #Should be 0 or 1; 0 for F, 1 for C
 
@@ -14,4 +14,12 @@ if [ -z $1 ]; then
     exit 0;
 fi
 
-curl --connect-timeout 30 -s http://rss.accuweather.com/rss/liveweather_rss.asp\?metric\=${METRIC}\&locCode\=$1 | sed -n '/Currently:/ s/.*: \(.*\): \([-0-9]*\)\([CF]\).*/\2° \L\1/p' | sed 's/A°/°/'
+# Set units based on METRIC flag
+if [ $METRIC -eq 1 ]; then
+    UNITS="m"
+else
+    UNITS="u"
+fi
+
+# Fetch weather from wttr.in and format output
+curl --connect-timeout 30 -s "wttr.in/$1?format=%t+%C&${UNITS}" 2>/dev/null | sed 's/+//g'
